@@ -34,7 +34,7 @@ npm install -g gulp
 
 ### Build
 
-To build a new version you just need to execute:
+To build a new version you just need to edit versions in `package.json` and  execute:
 
 ```
 ant build
