@@ -1,0 +1,46 @@
+<project name="semantic.rtl.builder">
+  <property name="base.dir" value="."/>
+  <property name="semantic.theme.config.default" value="defaults/theme.config"/>
+  <property name="semantic.theme.config" value="semantic/src/theme.config"/>
+  <property name="semantic.json.file.default" value="defaults/semantic.json"/>
+  <property name="semantic.json.file" value="semantic.json"/>
+  <property name="semantic.src.definitions.dir" value="semantic/src/definitions"/>
+  <property name="semantic.dir" value="semantic"/>
+  <property name="semantic.dist.dir" value="semantic/dist"/>
+  <property name="output.dist.dir" value="dist"/>
+  <property name="node.modules.dir" value="node_modules"/>
+
+  <target name="clean" description="clean changing parts">
+    <delete file="${semantic.json.file}"/>
+    <delete  dir="${semantic.dir}"/>
+  </target>
+
+  <target name="clean_all" description="clean everything" depends="clean">
+    <delete  dir="${output.dist.dir}"/>
+  </target>
+
+  <target name="pre.install" depends="clean_all">
+    <copy  file="${semantic.json.file.default}" tofile="${semantic.json.file}"/>
+    <copy  file="${semantic.theme.config.default}" tofile="${semantic.theme.config}"/>
+    <mkdir dir="${semantic.src.definitions.dir}"/>
+  </target>
+
+  <target name="build" depends="pre.install" description="the holly build command">
+    <exec executable="npm" dir="${basedir}" failonerror="true">
+      <arg value="install" />
+    </exec>
+    <exec executable="gulp" dir="${semantic.dir}" failonerror="true">
+      <arg value="build" />
+    </exec>
+    <mkdir dir="${output.dist.dir}"/>
+    <copy todir="${output.dist.dir}" >  
+      <fileset dir="${semantic.dist.dir}" includes="**"/>  
+    </copy> 
+  </target>
+
+  <target name="clean_node">
+    <delete  dir="${node.modules.dir}"/>
+  </target>
+
+</project>
+

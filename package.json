@@ -1,0 +1,19 @@
+{
+  "name": "semantic-ui-rtl",
+  "version": "2.2.6",
+  "description": "RTL Build of Semantic UI",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moinfar/Semantic-UI-RTL.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moinfar/Semantic-UI-RTL/issues"
+  },
+  "homepage": "https://github.com/moinfar/Semantic-UI-RTL#readme",
+  "dependencies": {
+    "semantic-ui": "^2.2.6"
+  }
+}
